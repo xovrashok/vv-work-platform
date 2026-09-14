@@ -21,3 +21,7 @@ export const getJobsByPartner = (partnerId: number): Promise<Job[]> => {
 export const getCategories = (): Promise<Category[]> => {
   return mockFetch(MOCK_CATEGORIES);
 };
+
+export const getJobs = (): Promise<Job[]> => {
+  return mockFetch(MOCK_JOBS);
+};

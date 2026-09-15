@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { getPartners, getCategories, getJobs } from "../api";
 import { useFetch } from "../hooks/useFetch";
 import { useDebounce } from "../hooks/useDebounce";
-import Skeleton from "../components/ui/Skeleton";
-import ErrorState from "../components/ui/ErrorState";
 import JobList from "../components/jobs/JobList";
+import PartnerList from "../components/partner/PartnerList";
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -81,30 +79,12 @@ const HomePage = () => {
         <section id="partners" className="space-y-6">
           <h2 className="text-2xl font-bold text-slate-900">Наші партнери</h2>
 
-          {isPartnersLoading && (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <Skeleton className="h-24 w-full" />
-              <Skeleton className="h-24 w-full" />
-              <Skeleton className="h-24 w-full" />
-              <Skeleton className="h-24 w-full" />
-            </div>
-          )}
-
-          {partnersError && <ErrorState onRetry={refetchPartners} />}
-
-          {!isPartnersLoading && !partnersError && (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {partners?.map((partner) => (
-                <Link
-                  key={partner.id}
-                  to={`/partners/${partner.slug}`}
-                  className="p-6 bg-white border border-slate-100 rounded-2xl shadow-xs hover:shadow-md hover:border-slate-200 transition-all text-center font-semibold text-slate-800 flex items-center justify-center min-h-[96px]"
-                >
-                  {partner.name}
-                </Link>
-              ))}
-            </div>
-          )}
+          <PartnerList
+            partners={partners}
+            isLoading={isPartnersLoading}
+            error={partnersError}
+            onRetry={refetchPartners}
+          />
         </section>
 
         <section className="space-y-8">

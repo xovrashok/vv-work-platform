@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="vv-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Скруглённый квадрат с градиентом from-blue-600 to-indigo-500 -->
+  <rect width="100" height="100" rx="30" fill="url(#vv-grad)" />
+  
+  <!-- Текст VV (font-black, жирный и по центру) -->
+  <text 
+    x="50%" 
+    y="55%" 
+    dominant-baseline="central" 
+    text-anchor="middle" 
+    fill="#ffffff" 
+    font-family="system-ui, -apple-system, sans-serif" 
+    font-weight="900" 
+    font-size="46"
+    letter-spacing="-2"
+  >
+    VV
+  </text>
+</svg>

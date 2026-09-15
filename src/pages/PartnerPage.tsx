@@ -4,7 +4,7 @@ import { getPartnerBySlug, getJobsByPartner } from "../api";
 import { useFetch } from "../hooks/useFetch";
 import Skeleton, { CardSkeleton } from "../components/ui/Skeleton";
 import ErrorState from "../components/ui/ErrorState";
-import PartnerHeader from "../components/partner/PartnerHeader";
+import PartnerHeader from "../components/partners/PartnerHeader";
 import JobCard from "../components/jobs/JobCard";
 
 const PartnerPage = () => {
@@ -21,7 +21,7 @@ const PartnerPage = () => {
 
   const fetchJobs = useCallback(
     () => (partner ? getJobsByPartner(partner.id) : Promise.resolve([])),
-    [partner?.id],
+    [partner],
   );
 
   const {

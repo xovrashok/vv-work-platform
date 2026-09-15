@@ -3,7 +3,7 @@ import { getPartners, getCategories, getJobs } from "../api";
 import { useFetch } from "../hooks/useFetch";
 import { useDebounce } from "../hooks/useDebounce";
 import JobList from "../components/jobs/JobList";
-import PartnerList from "../components/partner/PartnerList";
+import PartnerList from "../components/partners/PartnerList";
 import HeroSection from "../components/home/HeroSection";
 import CategoryFilter from "../components/categories/CategoryFilter";
 

@@ -18,7 +18,7 @@ describe("ContactForm Validation", () => {
 
   it("renders form correctly", () => {
     render(<ContactForm />);
-    expect(screen.getByPlaceholderText("Иван")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Олександр")).toBeInTheDocument();
   });
 
   it("shows error messages when inputs are invalid", async () => {

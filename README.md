@@ -17,6 +17,7 @@ A dynamic, high-performance web platform designed to simplify the job search pro
 - **Resilient Network Layer:** Simulated API layer (useFetch) with randomized latency (300-800ms) and ~13% error rates, complete with skeletons and inline retry mechanisms.
 - **Interactive Contact Form:** Instant client-side validation for Ukrainian phone numbers and Telegram handles (@username), character counter, and optimistic feedback.
 - **Accessible & Responsive:** Mobile-first layout compliant with modern accessibility (axe-core) standards.
+- **Saved Jobs & Persistence:** Real-time bookmarking system powered by a custom useLocalStorage hook and React Router Outlet context, supporting instant UI synchronization and URL-based filtering (?saved=true).
 
 ---
 
@@ -26,6 +27,7 @@ A dynamic, high-performance web platform designed to simplify the job search pro
 - **Optimized Rendering Cycle:** Isolated input states to prevent heavy list component re-renders on every keypress during filtering.
 - **Card-Based UI System:** Designed a cohesive visual language with elevated card layouts, subtle borders, and clear accent hierarchy in place of an existing Figma mockup.
 - **Resilient UX Mechanics:** Replaced invasive browser alerts with direct inline validation indicators and soft toast notifications for simulated async errors.
+- **Global State without External Libraries:** Handled application-wide saved state using Lifting State Up via React Router's Outlet context and local storage synchronization, avoiding heavy third-party state managers.
 
 ---
 
@@ -85,6 +87,6 @@ src/
 │ ├── layout/ # Shared Header, Footer, and Layout wrappers
 │ └── partners/ # Partner cards and list grids
 ├── data/ # Mock dataset (mockData.ts)
-├── hooks/ # Custom hooks (useFetch, useDebounce)
+├── hooks/ # Custom hooks (useFetch, useDebounce, useLocalStorage)
 ├── pages/ # Page routing components
 └── types/ # Strict TypeScript interface declarations

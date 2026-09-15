@@ -68,12 +68,25 @@ const JobList = ({
       </div>
 
       {hasMore && (
-        <div className="text-center pt-4">
+        <div className="text-center pt-6">
           <button
             onClick={handleLoadMore}
-            className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-bold rounded-2xl shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all duration-200 cursor-pointer"
           >
-            Показати ще
+            <span>Показати ще</span>
+            <svg
+              className="w-5 h-5 text-blue-200 group-hover:translate-y-0.5 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
           </button>
         </div>
       )}

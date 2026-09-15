@@ -4,7 +4,7 @@ import ErrorState from "../ui/ErrorState";
 import PartnerCard from "./PartnerCard";
 
 interface PartnerListProps {
-  partners: Partner[] | undefined;
+  partners: Partner[] | null | undefined;
   isLoading: boolean;
   error: string | null;
   onRetry: () => void;

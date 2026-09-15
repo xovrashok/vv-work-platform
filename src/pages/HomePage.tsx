@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { getPartners, getCategories, getJobs } from "../api";
 import { useFetch } from "../hooks/useFetch";
 import { useDebounce } from "../hooks/useDebounce";
-import Skeleton, { CardSkeleton } from "../components/ui/Skeleton";
+import Skeleton from "../components/ui/Skeleton";
 import ErrorState from "../components/ui/ErrorState";
+import JobList from "../components/jobs/JobList";
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -115,7 +116,7 @@ const HomePage = () => {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setSelectedCategory(null)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
                   selectedCategory === null
                     ? "bg-blue-600 text-white"
                     : "bg-slate-100 text-slate-600 hover:bg-slate-200"
@@ -127,7 +128,7 @@ const HomePage = () => {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.slug)}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
                     selectedCategory === cat.slug
                       ? "bg-blue-600 text-white"
                       : "bg-slate-100 text-slate-600 hover:bg-slate-200"
@@ -139,55 +140,12 @@ const HomePage = () => {
             </div>
           </div>
 
-          {isJobsLoading && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-            </div>
-          )}
-
-          {jobsError && <ErrorState onRetry={refetchJobs} />}
-
-          {!isJobsLoading && !jobsError && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {filteredJobs?.map((job) => (
-                <div
-                  key={job.id}
-                  className="p-6 bg-white border border-slate-100 rounded-2xl shadow-xs hover:shadow-md transition-all space-y-4 flex flex-col justify-between"
-                >
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-start gap-4">
-                      <h3 className="text-xl font-bold text-slate-900">
-                        {job.title}
-                      </h3>
-                      <span className="px-3 py-1 bg-blue-50 text-blue-600 rounded-lg text-xs font-semibold whitespace-nowrap">
-                        {job.category}
-                      </span>
-                    </div>
-                    <p className="text-sm text-slate-600 line-clamp-2">
-                      {job.description}
-                    </p>
-                  </div>
-                  <div className="pt-4 border-t border-slate-50 flex items-center justify-between text-sm">
-                    <span className="font-semibold text-slate-900">
-                      {job.salary}
-                    </span>
-                    <span className="text-slate-400">{job.location}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {!isJobsLoading && !jobsError && filteredJobs?.length === 0 && (
-            <div className="text-center py-12 bg-slate-50 rounded-2xl">
-              <p className="text-slate-500 font-medium">
-                Нічого не знайдено за вашим запитом.
-              </p>
-            </div>
-          )}
+          <JobList
+            jobs={filteredJobs}
+            isLoading={isJobsLoading}
+            error={jobsError}
+            onRetry={refetchJobs}
+          />
         </section>
       </div>
     </div>

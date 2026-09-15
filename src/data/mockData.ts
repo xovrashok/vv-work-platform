@@ -46,7 +46,7 @@ export const MOCK_JOBS: Job[] = [
     partnerId: 1,
     category: "it",
     salary: "2500 - 3500 €",
-    location: "Варшава / Ввіддалено",
+    location: "Варшава / Віддалено",
     description:
       "Розробка сучасних веб-інтерфейсів для масштабованої SaaS-платформи.",
     type: "Повна зайнятість",
@@ -104,5 +104,114 @@ export const MOCK_JOBS: Job[] = [
     description:
       "Робота на сучасному автоматизованому складі товарів народного споживання.",
     type: "Змінний графік",
+  },
+  {
+    id: 107,
+    title: "QA Automation Engineer (Python)",
+    partnerId: 1,
+    category: "it",
+    salary: "2200 - 3100 €",
+    location: "Віддалено",
+    description: "Автоматизація тестування REST API та веб-додатків на Python.",
+    type: "Повна зайнятість",
+  },
+  {
+    id: 108,
+    title: "Електрик на виробництво",
+    partnerId: 2,
+    category: "manufacturing",
+    salary: "2000 - 2600 €",
+    location: "Мюнхен",
+    description:
+      "Обслуговування та ремонт промислового обладнання та автоматичних ліній.",
+    type: "Повна зайнятість",
+  },
+  {
+    id: 109,
+    title: "Складський робочий",
+    partnerId: 3,
+    category: "logistics",
+    salary: "1400 - 1800 €",
+    location: "Брно",
+    description:
+      "Комплектування замовлень за сканером, сортування та пакування товарів.",
+    type: "Змінний графік",
+  },
+  {
+    id: 110,
+    title: "Кухар гарячого цеху",
+    partnerId: 2,
+    category: "hospitality",
+    salary: "1900 - 2500 €",
+    location: "Варшава",
+    description:
+      "Приготування страв європейської кухні у ресторанній мережі готелю.",
+    type: "Повна зайнятість",
+  },
+  {
+    id: 111,
+    title: "Штукатур-фасадник",
+    partnerId: 2,
+    category: "construction",
+    salary: "2100 - 2700 €",
+    location: "Дрезден",
+    description:
+      "Утеплення та оздоблення фасадів приватних та багатоквартирних будинків.",
+    type: "Повна зайнятість",
+  },
+  {
+    id: 112,
+    title: "Водій кур'єр (Категорія B)",
+    partnerId: 3,
+    category: "drivers",
+    salary: "1700 - 2200 €",
+    location: "Вроцлав",
+    description:
+      "Доставка поштових відправлень та посилок по місту на авто компанії.",
+    type: "Повна зайнятість",
+  },
+  {
+    id: 113,
+    title: "UI/UX Designer",
+    partnerId: 1,
+    category: "it",
+    salary: "2300 - 3200 €",
+    location: "Віддалено",
+    description:
+      "Проектування користувацьких інтерфейсів та створення дизайн-систем у Figma.",
+    type: "Гнучкий графік",
+  },
+  {
+    id: 114,
+    title: "Зварювальник (Метод MAG 135)",
+    partnerId: 2,
+    category: "manufacturing",
+    salary: "2200 - 2900 €",
+    location: "Катовіце",
+    description:
+      "Зварювання металоконструкцій на машинобудівному підприємстві.",
+    type: "Повна зайнятість",
+  },
+  {
+    id: 115,
+    title: "Адміністратор рецепції",
+    partnerId: 1,
+    category: "hospitality",
+    salary: "1500 - 1900 €",
+    location: "Краків",
+    description:
+      "Поселення гостей, консультація та реєстрація у системі готелю.",
+    type: "Змінний графік",
+  },
+  {
+    id: 116,
+    title: "Диспетчер-логіст",
+    partnerId: 3,
+    category: "logistics",
+    salary: "1800 - 2400 €",
+    location: "Прага",
+    description:
+      "Координація водіїв вантажівок, оптимізація маршрутів та обробка документів.",
+    type: "Повна зайнятість",
   },
 ];

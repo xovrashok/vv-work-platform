@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import type { Job } from "../../types/api";
 import { CardSkeleton } from "../ui/Skeleton";
 import ErrorState from "../ui/ErrorState";
@@ -22,6 +23,10 @@ const JobList = ({
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
   const [prevJobs, setPrevJobs] = useState(jobs);
 
+  const [searchParams] = useSearchParams();
+  const isSavedFilterActive = searchParams.get("saved") === "true";
+  const { savedJobIds } = useOutletContext<{ savedJobIds: string[] }>();
+
   if (jobs !== prevJobs) {
     setPrevJobs(jobs);
     setVisibleCount(ITEMS_PER_PAGE);
@@ -42,18 +47,35 @@ const JobList = ({
     return <ErrorState onRetry={onRetry} />;
   }
 
-  if (!jobs || jobs.length === 0) {
+  const filteredJobs = (jobs || []).filter((job) => {
+    if (isSavedFilterActive) {
+      return savedJobIds.includes(String(job.id));
+    }
+    return true;
+  });
+
+  if (filteredJobs.length === 0) {
     return (
-      <div className="text-center py-12 bg-slate-50 rounded-2xl">
+      <div className="text-center py-12 bg-slate-50 rounded-2xl space-y-3">
         <p className="text-slate-500 font-medium">
-          Нічого не знайдено за вашим запитом.
+          {isSavedFilterActive
+            ? "У вас поки немає збережених вакансій."
+            : "Нічого не знайдено за вашим запитом."}
         </p>
+        {isSavedFilterActive && (
+          <a
+            href="/"
+            className="inline-block text-sm font-semibold text-blue-600 hover:underline"
+          >
+            Показати всі вакансії
+          </a>
+        )}
       </div>
     );
   }
 
-  const visibleJobs = jobs.slice(0, visibleCount);
-  const hasMore = visibleCount < jobs.length;
+  const visibleJobs = filteredJobs.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredJobs.length;
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + ITEMS_PER_PAGE);
@@ -61,6 +83,20 @@ const JobList = ({
 
   return (
     <div className="space-y-8">
+      {isSavedFilterActive && (
+        <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+          <h2 className="text-xl font-bold text-slate-900">
+            Збережені вакансії ({filteredJobs.length})
+          </h2>
+          <a
+            href="/"
+            className="text-sm font-semibold text-blue-600 hover:underline"
+          >
+            Скинути фільтр
+          </a>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {visibleJobs.map((job) => (
           <JobCard key={job.id} job={job} />

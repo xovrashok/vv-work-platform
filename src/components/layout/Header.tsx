@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Bookmark } from "lucide-react";
 import Logo from "../ui/Logo";
 
-const Header = () => {
+interface HeaderProps {
+  count: number;
+}
+
+const Header = ({ count }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinkStyles = ({ isActive }: { isActive: boolean }) =>
@@ -35,34 +40,54 @@ const Header = () => {
           </NavLink>
         </nav>
 
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none"
-          aria-label="Переключити меню"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="flex items-center gap-3">
+          <NavLink
+            to="/?saved=true"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm transition-colors cursor-pointer"
           >
-            {isMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+            <Bookmark
+              size={16}
+              className={
+                count > 0 ? "text-blue-600 fill-blue-600" : "text-slate-500"
+              }
+            />
+            <span>Збережені</span>
+            {count > 0 && (
+              <span className="ml-0.5 px-2 py-0.5 text-xs font-bold bg-blue-600 text-white rounded-full">
+                {count}
+              </span>
             )}
-          </svg>
-        </button>
+          </NavLink>
+
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none"
+            aria-label="Переключити меню"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {isMenuOpen && (

@@ -52,8 +52,8 @@ npm test
 
 - **Lighthouse Score:** Performance 90+, Accessibility 100, Best Practices 100, SEO 100 on Production Builds.
 
-![Lighthouse Result](lighthouse-mobile.png)
-![Lighthouse Result](./lighthouse-desctop.png)
+![Lighthouse Result](/public/lighthouse-mobile.png)
+![Lighthouse Result](/public/lighthouse-desctop.png)
 
 ---
 

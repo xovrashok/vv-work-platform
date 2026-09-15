@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import Layout from "./components/layout/Layout";
 import HomePage from "./pages/HomePage";
 import PartnerPage from "./pages/PartnerPage";
-// import ContactsPage from "./pages/ContactsPage";
+import ContactsPage from "./pages/ContactsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
@@ -12,10 +13,11 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="partners/:slug" element={<PartnerPage />} />
-          {/* <Route path="contacts" element={<ContactsPage />} /> */}
+          <Route path="contacts" element={<ContactsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <Toaster position="top-right" reverseOrder={false} />
     </BrowserRouter>
   );
 }

@@ -65,7 +65,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/#employers"
+                  to="/employers"
                   className="hover:text-white transition-colors"
                 >
                   Пошук працівників

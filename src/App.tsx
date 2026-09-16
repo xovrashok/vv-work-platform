@@ -7,6 +7,7 @@ import PartnerPage from "./pages/PartnerPage";
 import ContactsPage from "./pages/ContactsPage";
 import AboutPage from "./pages/AboutPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import EmployersPage from "./pages/EmployersPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="partners/:slug" element={<PartnerPage />} />
           <Route path="contacts" element={<ContactsPage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="employers" element={<EmployersPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

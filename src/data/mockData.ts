@@ -1,4 +1,4 @@
-import type { Category, Partner, Job } from "../types/api";
+import type { Category, Partner, Job, Candidate } from "../types/api";
 
 export const MOCK_CATEGORIES: Category[] = [
   { id: 1, title: "Будівництво", slug: "construction" },
@@ -213,5 +213,68 @@ export const MOCK_JOBS: Job[] = [
     description:
       "Координація водіїв вантажівок, оптимізація маршрутів та обробка документів.",
     type: "Повна зайнятість",
+  },
+];
+
+export const MOCK_EMPLOYERS: Candidate[] = [
+  {
+    id: 1,
+    name: "Олександр",
+    surname: "К.",
+    category: "Водій категорії C/E",
+    location: "Німеччина",
+    experience: "5 років",
+    tags: ["ADR", "Код 95", "Тахограф"],
+    status: "Готовий до виїзду",
+  },
+  {
+    id: 2,
+    name: "Михайло",
+    surname: "П.",
+    category: "Зварювальник MIG/MAG 135/136",
+    location: "Польща",
+    experience: "4 роки",
+    tags: ["MIG/MAG", "Читання креслень", "EN 287"],
+    status: "В процесі оформлення",
+  },
+  {
+    id: 3,
+    name: "Анатолій",
+    surname: "Б.",
+    category: "Будівельник-арматурник",
+    location: "Чехія",
+    experience: "6 років",
+    tags: ["Бетонні роботи", "Моноліт", "Власне авто"],
+    status: "Готовий до виїзду",
+  },
+  {
+    id: 4,
+    name: "Дмитро",
+    surname: "В.",
+    category: "Оператор навантажувача (UDT)",
+    location: "Нідерланди",
+    experience: "2 роки",
+    tags: ["UDT", "Складська логістика", "Англійська B1"],
+    status: "Розглядає пропозиції",
+  },
+  {
+    id: 5,
+    name: "Олена",
+    surname: "М.",
+    category: "Пакувальник / Комплектувальник",
+    location: "Польща",
+    experience: "1 рік",
+    tags: ["Сканер", "Робота в команді", "Швидкий старт"],
+    status: "Готова до виїзду",
+  },
+  {
+    id: 6,
+    name: "Ігор",
+    surname: "С.",
+    category: "Електрик / Монтажник мереж",
+    location: "Німеччина",
+    experience: "7 років",
+    tags: ["Допуск до 1000В", "Монтаж шаф", "Німецька A2"],
+    status: "В процесі оформлення",
   },
 ];

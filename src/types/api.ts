@@ -7,6 +7,17 @@ export type Partner = {
   location: string;
 };
 
+export type Candidate = {
+  id: number;
+  name: string;
+  surname: string;
+  category: string;
+  location: string;
+  experience: string;
+  tags: string[];
+  status: string;
+};
+
 export type Job = {
   id: number;
   title: string;

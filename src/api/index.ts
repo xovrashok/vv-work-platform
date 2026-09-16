@@ -1,9 +1,18 @@
 import { mockFetch } from "./mockFetch";
-import { MOCK_PARTNERS, MOCK_JOBS, MOCK_CATEGORIES } from "../data/mockData";
-import type { Partner, Job, Category } from "../types/api";
+import {
+  MOCK_PARTNERS,
+  MOCK_JOBS,
+  MOCK_CATEGORIES,
+  MOCK_EMPLOYERS,
+} from "../data/mockData";
+import type { Partner, Job, Category, Candidate } from "../types/api";
 
 export const getPartners = (): Promise<Partner[]> => {
   return mockFetch(MOCK_PARTNERS);
+};
+
+export const getCandidate = (): Promise<Candidate[]> => {
+  return mockFetch(MOCK_EMPLOYERS);
 };
 
 export const getPartnerBySlug = (

@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 import Logo from "../ui/Logo";
 
+const SOCIAL_LINKS = [
+  { label: "Telegram", href: "https://telegram.org" },
+  { label: "LinkedIn", href: "https://linkedin.com" },
+  { label: "Facebook", href: "https://facebook.com" },
+  { label: "Instagram", href: "https://instagram.com" },
+];
+
 const Footer = () => {
   return (
     <footer className="bg-slate-900 text-slate-300 pt-12 pb-8 border-t border-slate-800">
@@ -34,7 +41,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/#partners"
+                  to="/partners"
                   className="hover:text-white transition-colors"
                 >
                   Компанії-партнери
@@ -101,38 +108,17 @@ const Footer = () => {
               Соцмережі
             </h4>
             <div className="flex flex-col space-y-2 text-sm text-slate-400">
-              <a
-                href="https://telegram.org"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                Telegram
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                Facebook
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                Instagram
-              </a>
+              {SOCIAL_LINKS.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  {social.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>

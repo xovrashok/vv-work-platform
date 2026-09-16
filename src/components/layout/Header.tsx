@@ -7,6 +7,14 @@ interface HeaderProps {
   count: number;
 }
 
+const NAV_LINKS = [
+  { to: "/", label: "Знайти роботу", end: true },
+  { to: "/employers", label: "Знайти працівника", end: true },
+  { to: "/about", label: "Про нас", end: true },
+  { to: "/partners", label: "Партнери", end: true },
+  { to: "/contacts", label: "Контакти" },
+];
+
 const Header = ({ count }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -23,21 +31,16 @@ const Header = ({ count }: HeaderProps) => {
         <Logo />
 
         <nav className="hidden md:flex items-center gap-8">
-          <NavLink to="/" end className={navLinkStyles}>
-            Знайти роботу
-          </NavLink>
-          <NavLink to="/employers" end className={navLinkStyles}>
-            Знайти працівника
-          </NavLink>
-          <NavLink to="/about" end className={navLinkStyles}>
-            Про нас
-          </NavLink>
-          <NavLink to="/partners" end className={navLinkStyles}>
-            Партнери
-          </NavLink>
-          <NavLink to="/contacts" className={navLinkStyles}>
-            Контакти
-          </NavLink>
+          {NAV_LINKS.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.end}
+              className={navLinkStyles}
+            >
+              {link.label}
+            </NavLink>
+          ))}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -92,21 +95,16 @@ const Header = ({ count }: HeaderProps) => {
 
       {isMenuOpen && (
         <nav className="md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-4 flex flex-col gap-3">
-          <NavLink
-            to="/"
-            end
-            className={navLinkStyles}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Знайти роботу
-          </NavLink>
-          <NavLink
-            to="/contacts"
-            className={navLinkStyles}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Контакти
-          </NavLink>
+          {NAV_LINKS.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.end}
+              className={navLinkStyles}
+            >
+              {link.label}
+            </NavLink>
+          ))}
         </nav>
       )}
     </header>
